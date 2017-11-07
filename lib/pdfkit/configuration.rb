@@ -1,10 +1,11 @@
 class PDFKit
   class Configuration
-    attr_accessor :meta_tag_prefix, :default_options, :root_url
+    attr_accessor :meta_tag_prefix, :default_options, :root_url, :xvfb
     attr_writer :verbose
 
     def initialize
       @verbose         = false
+      @xvfb            = false
       @meta_tag_prefix = 'pdfkit-'
       @default_options = {
         :disable_smart_shrinking => false,
@@ -15,7 +16,6 @@ class PDFKit
         :margin_bottom => '0.75in',
         :margin_left => '0.75in',
         :encoding => 'UTF-8',
-        :xvfb => false,
       }
     end
 

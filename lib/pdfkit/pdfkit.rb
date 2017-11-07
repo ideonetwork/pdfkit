@@ -54,7 +54,7 @@ class PDFKit
 
   def executable
     executable = PDFKit.configuration.wkhtmltopdf
-    if options[:xvfb]
+    if PDFKit.configuration.xvfb
       executable = "xvfb-run -- " + executable
     end
 
