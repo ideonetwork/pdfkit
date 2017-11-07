@@ -1,3 +1,27 @@
+# IMPORTANT
+
+This fork has added the option **xvfb** to wrap the wkhtmltopdf command inside xvfb-run command.
+This fix is already on a pull request (https://github.com/pdfkit/pdfkit/pull/277) but it's not already on the master branch.
+
+This option should fix the wkhtmltopdf error on Ubuntu when installing the library from apt-get.
+
+## Usage
+
+```ruby
+path = '/usr/bin/wkhtmltopdf'
+
+PDFKit.configure do |config|
+  config.wkhtmltopdf = path
+  config.xvfb = true # -> Option to run wkhtmltopdf with xvfb
+  config.default_options = {
+    encoding: 'UTF-8',
+    page_size: 'A4',
+    print_media_type: true,
+    quiet: false
+  }
+end
+```
+
 # PDFKit
 
 Create PDFs using plain old HTML+CSS. Uses [wkhtmltopdf](http://github.com/antialize/wkhtmltopdf) on the back-end which renders HTML using Webkit.
