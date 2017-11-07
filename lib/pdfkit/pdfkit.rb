@@ -44,7 +44,12 @@ class PDFKit
     input_for_command = @source.to_input_for_command
     output_for_command = path ? Shellwords.shellescape(path) : '-'
 
-    "#{shell_escaped_command} #{input_for_command} #{output_for_command}"
+    final_command = "#{shell_escaped_command} #{input_for_command} #{output_for_command}"
+    if PDFKit.configuration.xvfb
+      final_command = "xvfb-run -- #{final_command}"
+    end
+    
+    return final_command
   end
 
   def options
@@ -53,12 +58,7 @@ class PDFKit
   end
 
   def executable
-    executable = PDFKit.configuration.wkhtmltopdf
-    if PDFKit.configuration.xvfb
-      executable = "xvfb-run -- " + executable
-    end
-
-    return executable
+    PDFKit.configuration.wkhtmltopdf
   end
 
   def to_pdf(path=nil)
