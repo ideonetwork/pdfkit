@@ -5,6 +5,10 @@ This fix is already on a pull request (https://github.com/pdfkit/pdfkit/pull/277
 
 This option should fix the wkhtmltopdf error on Ubuntu when installing the library from apt-get.
 
+Tested with:
+
+- Ubuntu 16.04 - wkhtmltopdf 0.12.2.4
+
 ## Usage
 
 ```ruby
